@@ -73,11 +73,7 @@ const ProductInfo = (props) => {
             }
         })
         setProductDetails(res)
-
     }
-
-    console.log(product)
-
 
     return (
         <div>
