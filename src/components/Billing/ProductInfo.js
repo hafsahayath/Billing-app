@@ -94,7 +94,7 @@ const ProductInfo = (props) => {
                 }) 
             }
             <label>Total</label>
-            <input type="text" value={grandTotal} disabled={true}/>           
+            <input type="text" value={grandTotal} disabled={true} />           
             <button onClick={handleAddLineItem}>add</button>
         </div>
     )

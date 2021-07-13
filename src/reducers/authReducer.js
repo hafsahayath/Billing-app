@@ -14,6 +14,10 @@ const authReducer = (state=authInitialState, action) => {
         case 'LOGGED_IN':{
             return {...state, loggedIn: true}            
         }
+
+        case 'LOGOUT':{
+            return authInitialState
+        }
         
         default:{
             return {...state}

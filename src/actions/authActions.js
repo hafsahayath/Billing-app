@@ -38,6 +38,12 @@ export const asyncLoginUser = (formData) => {
     }
 }
 
+export const resetState = () => {
+    return {
+        type: 'LOGOUT'
+    }
+}
+
 export const setLoggedIn = () => {
     return {
         type: 'LOGGED_IN'
