@@ -4,13 +4,15 @@ import authReducer from "../reducers/authReducer";
 import productReducer from "../reducers/productReducer";
 import customerReducer from "../reducers/customerReducer";
 import accountReducer from "../reducers/accountReducer";
+import billReducer from "../reducers/billReducer";
 
 const configStore = () => {
     const store = createStore(combineReducers({
         auth: authReducer,
         products: productReducer,
         customers: customerReducer,
-        account: accountReducer
+        account: accountReducer,
+        bills: billReducer
     }),applyMiddleware(thunk))
     return store
 }

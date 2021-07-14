@@ -6,7 +6,7 @@ const AccountDetails = (props) => {
     const account = useSelector(state=>state.account)
     const dispatch = useDispatch()
 
-    console.log(account)
+    // console.log(account)
 
     useEffect(()=>{
         dispatch(asyncGetAccDetails())

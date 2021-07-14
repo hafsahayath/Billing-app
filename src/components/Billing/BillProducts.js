@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { Hint } from 'react-autocomplete-hint'
 import { useSelector } from 'react-redux'
 
-const ProductInfo = (props) => {
+const BillProducts = (props) => {
     const products = useSelector(state=>state.products)
     const [productDetails, setProductDetails] = useState([{id:'', name:'', quantity:'', subTotal:''}])
     const [product, setProduct] = useState({})
     const [grandTotal, setGrandTotal] = useState('')
+
+    const { addLineItem } = props
 
     useEffect(()=>{
         const res = productDetails.reduce((acc, curr)=>acc+curr.subTotal,0)
@@ -19,25 +21,27 @@ const ProductInfo = (props) => {
         const productName = e.target.value
         const productFind = products.find(ele=>ele.name===productName)
         if(productFind){
-            setProduct(productFind)
             const res = productDetails.map((ele, i)=>{
                 if(index === i){
-                    return {...ele, id: product._id}
+                    return {...ele, id: productFind._id, subTotal:ele.quantity*productFind.price}
                 } else {
                     return ele
                 }
             })
+            setProduct(productFind)
             setProductDetails(res)
         } else {
-            alert('product not available')
-            const res = productDetails.map((ele, i)=>{
-                if(index === i){
-                    return {...ele, name:''}
-                } else {
-                    return ele
-                }
-            })
-            setProductDetails(res)
+            if(productName!==''){
+                alert('product not available')
+                const res = productDetails.map((ele, i)=>{
+                    if(index === i){
+                        return {...ele, name:''}
+                    } else {
+                        return ele
+                    }
+                })
+                setProductDetails(res)
+            }
         }
     }
 
@@ -73,6 +77,12 @@ const ProductInfo = (props) => {
             }
         })
         setProductDetails(res)
+        const lineItems = res.map(ele=>{
+            if(ele.name && ele.quantity){
+                return {product: ele.id, quantity: ele.quantity}
+            }
+        }).filter(ele=>ele)
+        addLineItem(lineItems)
     }
 
     return (
@@ -93,11 +103,11 @@ const ProductInfo = (props) => {
                     )
                 }) 
             }
+            <button onClick={handleAddLineItem}>add</button>
             <label>Total</label>
             <input type="text" value={grandTotal} disabled={true} />           
-            <button onClick={handleAddLineItem}>add</button>
         </div>
     )
 }
 
-export default ProductInfo
+export default BillProducts

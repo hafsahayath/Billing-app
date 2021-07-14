@@ -1,0 +1,23 @@
+.diagonal-split-background{
+    background-image: -webkit-linear-gradient(-10deg, #4D7DE3 38%, #F1F4F9 38.2%);
+    height: 100vh;
+}
+
+.home-page-main-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-left-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 100px;
+}
+
+.login-right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 200px;
+}
