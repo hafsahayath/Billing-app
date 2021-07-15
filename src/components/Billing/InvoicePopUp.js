@@ -1,5 +1,6 @@
 import { Modal, Button } from "react-bootstrap";
 import { useSelector } from 'react-redux'
+
 // import { findProduct } from "../../selectors/billing";
  
 const InvoicePopUp = (props) => {
@@ -9,15 +10,17 @@ const InvoicePopUp = (props) => {
   const products = useSelector(state=>state.products)
 
   const findCustomer = (id, array) => {
-    return array.find(ele=>{
+    const item = array.find(ele=>{
       return ele._id === id
     })
+    return item ? {...item} : {}
   }
 
   const findProduct = (id, array) => {
-    return array.find(ele=>{
+    const item = array.find(ele=>{
       return ele._id === id
     })
+    return item ? {...item} : {}
   } 
 
   const total = lineItems && lineItems.map(ele=>{
@@ -42,9 +45,9 @@ const InvoicePopUp = (props) => {
           </div>
           <div>
             <h4>Bill To :</h4>
-            <p>Customer Name: {customer && findCustomer(customer, customers).name}</p>
-            <p>Contact Number: {customer && findCustomer(customer, customers).mobile}</p>
-            {customer && findCustomer(customer, customers).email!=='' && <p>Email : {findCustomer(customer, customers).email } </p>}
+            <p>Customer Name: {findCustomer(customer, customers).name}</p>
+            <p>Contact Number: {findCustomer(customer, customers).mobile}</p>
+            {findCustomer(customer, customers).email && <p>Email : {findCustomer(customer, customers).email } </p>}
           </div>
           <table>
               <thead>

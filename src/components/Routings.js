@@ -26,6 +26,7 @@ const Routings = (props) => {
                         <Link to="/products">Products</Link>
                         <Link to="/account">Account</Link>
                         <Link to="/bills">Bills</Link>
+                        <Link to="/listing-bills">View bills</Link>
                         <Link to="/" onClick={()=>{
                             dispatch(resetState())
                             alert('logged out successfully')

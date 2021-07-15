@@ -37,26 +37,26 @@ const Login = (props) => {
     })
 
     return (
-        <div className="diagonal-split-background home-page-main-container">
+        <div className="home-page-main-container">
             <div className="login-left-container">
-                    <h3>Don't have an account?</h3>
+                    <h4>Don't have an account?</h4>
                     <p>Own a small business? Or planning to start one?</p>
                     <p>Register to get started!</p>
-                    <Button style={{maxWidth:'fit-content'}} variant="outline-light"><Link style={{textDecoration:'none', color:'#fff'}} to="/register">Register here</Link></Button>
+                    <Button className="register-button"><Link style={{textDecoration:'none', color:'white'}} to="/register">Register here</Link></Button>
             </div>
             <div className="login-right-container">
                 <h1>Login</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, natus!</p>
-                <Form onSubmit={formik.handleSubmit}>
-                    <Form.Group>
+                <p>Login for instant access to your business data</p>
+                <Form className="login-form-control" onSubmit={formik.handleSubmit}>
+                    <Form.Group className="form-fields">
                         <Form.Control type="email" name="email" placeholder="enter the email" value={formik.values.email} onBlur={formik.handleBlur} onChange={formik.handleChange} />
-                        {formik.touched.email && formik.errors.email ? <Form.Text>{formik.errors.email}</Form.Text> : null}
+                        {formik.touched.email && formik.errors.email ? <Form.Text className="error-text">{formik.errors.email}</Form.Text> : null}
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className="form-fields">
                         <Form.Control type="password" name="password" placeholder="enter the password" value={formik.values.password} onBlur={formik.handleBlur} onChange={formik.handleChange} />
-                        {formik.touched.password && formik.errors.password ? <Form.Text>{formik.errors.password}</Form.Text>: null }  
+                        {formik.touched.password && formik.errors.password ? <Form.Text className="error-text">{formik.errors.password}</Form.Text>: null }  
                     </Form.Group>
-                    <Button variant="primary" type="submit">Login</Button>
+                    <Button className="login-button" variant="primary" type="submit">Login</Button>
                 </Form>
             </div>
         </div>

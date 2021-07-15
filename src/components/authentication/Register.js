@@ -3,6 +3,7 @@ import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
+import { Form, Button } from 'react-bootstrap'
 import { asyncRegisterUser } from '../../actions/authActions'
 
 const Register = (props) => {
@@ -46,34 +47,38 @@ const Register = (props) => {
     })
 
     return (
-        <div>
-            <h1>Sign up for an Account</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, natus!</p>
-            <form onSubmit={formik.handleSubmit}>
-                <div>
-                    <input type="text" name="username" placeholder="enter the username" value={formik.values.username} onBlur={formik.handleBlur} onChange={formik.handleChange}/> <br />
-                    {formik.touched.username && formik.errors.username ? <small>{formik.errors.username}</small> : null} 
-                </div>
-                <div>
-                    <input type="email" name="email" placeholder="enter the email" value={formik.values.email} onBlur={formik.handleBlur} onChange={formik.handleChange} />  <br />
-                    {formik.touched.email && formik.errors.email ? <small>{formik.errors.email}</small> : null}
-                </div>
-                <div>
-                    <input type="password" name="password" placeholder="enter the password" value={formik.values.password} onBlur={formik.handleBlur} onChange={formik.handleChange} />  <br />
-                    {formik.touched.password && formik.errors.password ? <small>{formik.errors.password}</small>: null }  
-                </div>
-                <div>
-                    <input type="text" name="businessName" placeholder="enter your business name" value={formik.values.businessName} onBlur={formik.handleBlur} onChange={formik.handleChange} />  <br />
-                    {formik.touched.businessName && formik.errors.businessName ? <small>{formik.errors.businessName}</small> : null} 
-                </div>
-                <div>
-                    <input type="text" name="address" placeholder="enter the address" value={formik.values.address} onBlur={formik.handleBlur} onChange={formik.handleChange} /> <br />
-                    {formik.touched.address && formik.errors.address ? <small>{formik.errors.address}</small> : null} 
-                </div>
-                <button type="submit">Sign up</button>
-            </form>
-            <h2>Already signed up?</h2>
-            <Link to="/">Login</Link>
+        <div className="home-page-main-container">
+            <div className="login-left-container">
+                <h2>Already signed up?</h2>
+                <Button><Link to="/">Login</Link></Button>
+            </div>
+            <div className="login-right-container">
+                <h1>Sign up for an Account</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, natus!</p>
+                <Form className="login-form-control" onSubmit={formik.handleSubmit}>
+                    <Form.Group className="form-fields">
+                        <Form.Control type="text" name="username" placeholder="enter the username" value={formik.values.username} onBlur={formik.handleBlur} onChange={formik.handleChange}/> <br />
+                        {formik.touched.username && formik.errors.username ? <small>{formik.errors.username}</small> : null} 
+                    </Form.Group>
+                    <Form.Group className="form-fields">
+                        <Form.Control type="email" name="email" placeholder="enter the email" value={formik.values.email} onBlur={formik.handleBlur} onChange={formik.handleChange} />  <br />
+                        {formik.touched.email && formik.errors.email ? <small>{formik.errors.email}</small> : null}
+                    </Form.Group>
+                    <Form.Group className="form-fields">
+                        <Form.Control type="password" name="password" placeholder="enter the password" value={formik.values.password} onBlur={formik.handleBlur} onChange={formik.handleChange} />  <br />
+                        {formik.touched.password && formik.errors.password ? <small>{formik.errors.password}</small>: null }  
+                    </Form.Group>
+                    <Form.Group className="form-fields">
+                        <Form.Control type="text" name="businessName" placeholder="enter your business name" value={formik.values.businessName} onBlur={formik.handleBlur} onChange={formik.handleChange} />  <br />
+                        {formik.touched.businessName && formik.errors.businessName ? <small>{formik.errors.businessName}</small> : null} 
+                    </Form.Group>
+                    <Form.Group className="form-fields">
+                        <Form.Control type="text" name="address" placeholder="enter the address" value={formik.values.address} onBlur={formik.handleBlur} onChange={formik.handleChange} /> <br />
+                        {formik.touched.address && formik.errors.address ? <small>{formik.errors.address}</small> : null} 
+                    </Form.Group>
+                    <Button className="login-button" type="submit">Sign up</Button>
+                </Form>
+            </div>
         </div>
     )
 }
