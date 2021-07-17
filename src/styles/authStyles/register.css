@@ -1,0 +1,79 @@
+.home-page-main-container {
+    background-image: -webkit-linear-gradient(-10deg, #4D7DE3 38%, #F1F4F9 38.2%);
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.signup-left-container {
+    grid-column: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    justify-content: center;
+    padding-left: 100px;
+    color: #fff;
+}
+
+.signup-left-container p {
+    align-self: center;
+    text-align: center;
+}
+
+.signup-left-container h2 {
+    align-self: center;
+    padding: 10px;
+}
+
+.signup-left-container .login-left-btn {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    width: 130px;
+    padding: 8px 0;
+    align-self: center;
+    margin-top: 10px;
+}
+
+.signup-right-container {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    padding-top: 65px;
+    padding-left: 100px;
+    height: 500px;
+}
+
+.signup-right-container h1 {
+    text-align: center;
+    padding: 8px;
+    font-size: 45px;
+}
+
+.signup-right-container p {
+    width: 300px;
+    text-align: center;
+    align-self: center;
+}
+
+.signup-right-container .signup-form-control {
+    width: 400px;
+    align-self: center;
+}
+
+.signup-form-control .signup-button {
+    margin-top: 0;
+    width: 400px;
+}
+
+.signup-form-control .signup-form-fields,
+.signup-form-control .signup-button {
+    margin-top: 5px;
+}
+
+.signup-form-control .error-text {
+    color: #dc3545;
+}

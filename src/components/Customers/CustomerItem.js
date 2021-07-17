@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import CustomerEditModal from './CustomerEditModal';
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { asyncEditCustomer, asyncDeleteCustomer } from '../../actions/customerActions'
 
-const CustomerItem = ({_id:id, name, mobile, email, toggleStatus}) => {
+const CustomerItem = ({_id:id, name, mobile, email, i, toggleStatus}) => {
     const [modalShow, setModalShow] = useState(false);
     const dispatch = useDispatch()
 
@@ -45,11 +46,11 @@ const CustomerItem = ({_id:id, name, mobile, email, toggleStatus}) => {
     return (
         <>
             <tr key={id}>
+                <td>{i+1}</td>
                 <td>{name}</td>
                 <td>{mobile}</td>
                 <td>{email}</td>
-                <td><button onClick={handleEdit}>edit</button><button onClick={handleDelete}>delete</button></td>
-                <td><button>invoices</button></td>
+                <td colSpan="2" style={{textAlign:'center'}}><Button variant="primary" onClick={handleEdit}>edit</Button>&nbsp;<Button variant="danger" onClick={handleDelete}>delete</Button></td>
             </tr>
 
             <CustomerEditModal

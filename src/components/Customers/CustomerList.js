@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Form, Table } from 'react-bootstrap'
 import { asyncGetCustomers } from '../../actions/customerActions'
 import CustomerItem from './CustomerItem'
+import '../../styles/customerStyles/customerList.css'
 
 const CustomerList = (props) => {
     const customers = useSelector(state=>state.customers)
@@ -34,23 +36,28 @@ const CustomerList = (props) => {
     }
 
     return (
-        <div>
-            <input type="text" value={search} placeholder="search by name or number" onChange={handleSearchChange} />
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Mobile</th>
-                        <th>Email</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {listCustomers.map(ele=>{
-                        return <CustomerItem key={ele._id} {...ele} toggleStatus={toggleStatus}/>
-                    })}
-                </tbody>
-            </table>
+        <div className="main-container-list">
+            <div className="search-component">
+                <Form.Control type="text" value={search} placeholder="search by name or number" onChange={handleSearchChange} />
+            </div>
+            <div className="table-component">
+                <Table striped bordered hover size="md">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>Email</th>
+   
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {listCustomers.map((ele,i)=>{
+                            return <CustomerItem key={ele._id} i={i} {...ele} toggleStatus={toggleStatus}/>
+                        })}
+                    </tbody>
+                </Table>
+            </div>
         </div>
     )
 }

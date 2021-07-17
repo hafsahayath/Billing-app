@@ -42,7 +42,7 @@ const Login = (props) => {
                     <h4>Don't have an account?</h4>
                     <p>Own a small business? Or planning to start one?</p>
                     <p>Register to get started!</p>
-                    <Button className="register-button"><Link style={{textDecoration:'none', color:'white'}} to="/register">Register here</Link></Button>
+                    <Link className="register-button" style={{textDecoration:'none', color:'white',textAlign:"center"}} to="/register">Register here</Link>
             </div>
             <div className="login-right-container">
                 <h1>Login</h1>

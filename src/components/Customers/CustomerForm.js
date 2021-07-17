@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
 import { asyncAddCustomer } from '../../actions/customerActions'
 import FormItem from './FormItem'
+import '../../styles/customerStyles/customerForm.css'
 
 const CustomerForm = (props) => {
 
@@ -31,9 +32,11 @@ const CustomerForm = (props) => {
     })
 
     return (
-        <div>
-            <h1>Add a customer</h1>
-            <FormItem formik={formik} buttonName="Add"/>
+        <div className="customer-container">
+            <h1>Customer data</h1>
+            <div className="add-customer-container">
+                <FormItem formik={formik} buttonName="Add customer" inline={true}/>
+            </div>
         </div>
     )
 }

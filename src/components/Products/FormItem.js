@@ -1,19 +1,23 @@
 import React from 'react'
+import { Form, Button } from 'react-bootstrap'
+import '../../styles/productStyles/productFormItem.css'
 
-const FormItem = ({formik, buttonName}) => {
+const FormItem = ({formik, buttonName, inline}) => {
     return (
         <div>
-            <form onSubmit={formik.handleSubmit}>
-                <div>
-                    <input type="name" name="name" placeholder="enter name of the product" value={formik.values.name} onBlur={formik.handleBlur} onChange={formik.handleChange} />  <br />
-                    {formik.touched.name && formik.errors.name ? <small>{formik.errors.name}</small> : null}
-                </div>
-                <div>
-                    <input type="number" name="price" placeholder="enter the price" value={formik.values.price} onBlur={formik.handleBlur} onChange={formik.handleChange} />  <br />
-                    {formik.touched.price && formik.errors.price ? <small>{formik.errors.price}</small>: null }  
-                </div>
-                <button type="submit">{buttonName}</button>
-            </form>            
+            <Form className={inline? "product-inline-form":"product-form-column"} onSubmit={formik.handleSubmit}>
+                <Form.Group className="product-form-groups">
+                    <Form.Control type="name" name="name" placeholder="enter name of the product" value={formik.values.name} onBlur={formik.handleBlur} onChange={formik.handleChange} />
+                    {formik.touched.name && formik.errors.name ? <Form.Text className="error-text">{formik.errors.name}</Form.Text> : null}
+                </Form.Group>
+                <Form.Group className="product-form-groups">
+                    <Form.Control type="number" name="price" placeholder="enter the price" value={formik.values.price} onBlur={formik.handleBlur} onChange={formik.handleChange} />
+                    {formik.touched.price && formik.errors.price ? <Form.Text className="error-text">{formik.errors.price}</Form.Text>: null }  
+                </Form.Group>
+                <Form.Group className="product-form-groups">
+                    <Button type="submit">{buttonName}</Button>
+                </Form.Group>
+            </Form>            
         </div>
     )
 }

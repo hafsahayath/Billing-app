@@ -1,0 +1,16 @@
+.main-container-list {
+    width: 91vw;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 5px -5px #888888;
+
+}
+
+.search-component{
+    width: 300px;
+    align-self: flex-end;
+    margin-bottom: 20px;
+}

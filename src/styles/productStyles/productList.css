@@ -1,0 +1,35 @@
+.main-product-container-list {
+    width: 91vw;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 30px;
+    padding: 20px;
+    box-shadow: 0 5px 5px -5px #888888;
+
+}
+
+.search-sort {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+}
+
+.product-search-component{
+    width: 300px;
+    /* align-self: flex-end; */
+    margin-bottom: 20px;
+}
+
+.search-sort .product-sort select {
+    /* width: 150px; */
+    width: 200px;
+    height: 38.5px;
+    margin-left: 5px;
+    border: solid 1px #cccccc;
+    border-radius: 4px;
+    padding: 7px 15px;
+    color: rgb(65, 62, 62);
+    letter-spacing: 0.7px;
+    margin-top: 25px;  
+}

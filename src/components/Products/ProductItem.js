@@ -6,7 +6,7 @@ import * as Yup from 'yup'
 import ProductEditModal from './ProductEditModal'
 import { asyncDeleteProduct, asyncEditProduct } from '../../actions/productActions'
 
-const ProductItem = ({_id:id, name, price, editToggle, resetSearch}) => {
+const ProductItem = ({_id:id, name, price, i, editToggle, resetSearch}) => {
     const [modalShow, setModalShow] = useState(false)
     const dispatch = useDispatch()
 
@@ -43,9 +43,10 @@ const ProductItem = ({_id:id, name, price, editToggle, resetSearch}) => {
     return (
         <>
             <tr>
+                <td>{i+1}</td>
                 <td>{name}</td>
                 <td>{price}</td>
-                <td><Button variant="primary" onClick={handleEdit}>edit</Button> <Button variant="danger" onClick={handleDelete}>delete</Button></td>
+                <td style={{textAlign:'center'}}><Button variant="primary" onClick={handleEdit}>edit</Button>&nbsp;<Button variant="danger" onClick={handleDelete}>delete</Button></td>
             </tr>
 
             <ProductEditModal

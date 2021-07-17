@@ -1,16 +1,16 @@
 import React from 'react'
+import { Table, Button } from 'react-bootstrap'
 
 const BillTable = ({bills, dateFormatter, findCustomer, customers, handleInvoice, handleDelete}) => {
     return (
-        <div>
-            <table border="1">
+        <div style={{width:'100vw', paddingTop:'50px'}}>
+            <Table striped bordered hover size="lg">
                 <thead>
                     <tr>
                         <th>SlNo</th>
                         <th>Date</th>
                         <th>Customer</th>
                         <th>Total</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,13 +21,12 @@ const BillTable = ({bills, dateFormatter, findCustomer, customers, handleInvoice
                                 <td>{dateFormatter(ele.date)}</td>
                                 <td>{findCustomer(ele.customer, customers).mobile}</td>
                                 <td>{ele.total}</td>
-                                <td><a href="#" onClick={()=>handleInvoice(ele)}> invoice</a></td>
-                                <td><button onClick={()=>handleDelete(ele._id)}>delete</button></td>
+                                <td style={{textAlign:'center'}}><a href="#" onClick={()=>handleInvoice(ele)}> invoice</a>&nbsp;<Button onClick={()=>handleDelete(ele._id)}>delete</Button></td>
                             </tr>
                         )
                     })}
                 </tbody>
-            </table>            
+            </Table>            
         </div>
     )
 }

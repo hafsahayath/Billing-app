@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Button } from 'react-bootstrap'
 import { asyncRegisterUser } from '../../actions/authActions'
+import '../../styles/authStyles/register.css'
 
 const Register = (props) => {
     const isRegistered = useSelector(state=>state.auth.register)
+
     
     useEffect(()=>{
         if(isRegistered){
@@ -41,42 +43,43 @@ const Register = (props) => {
                 .required('business address is required')
         }),
         onSubmit:values=>{
-            console.log(values)
+            // console.log(values)
             dispatch(asyncRegisterUser(values))
         }
     })
 
     return (
         <div className="home-page-main-container">
-            <div className="login-left-container">
+            <div className="signup-left-container">
                 <h2>Already signed up?</h2>
-                <Button><Link to="/">Login</Link></Button>
+                <p>Login for instant access to your business data</p>
+                <Link className="login-left-btn" style={{textDecoration:'none', color:'white', textAlign:"center"}} to="/">Login</Link>
             </div>
-            <div className="login-right-container">
+            <div className="signup-right-container">
                 <h1>Sign up for an Account</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, natus!</p>
-                <Form className="login-form-control" onSubmit={formik.handleSubmit}>
-                    <Form.Group className="form-fields">
-                        <Form.Control type="text" name="username" placeholder="enter the username" value={formik.values.username} onBlur={formik.handleBlur} onChange={formik.handleChange}/> <br />
-                        {formik.touched.username && formik.errors.username ? <small>{formik.errors.username}</small> : null} 
+                <Form className="signup-form-control" onSubmit={formik.handleSubmit}>
+                    <Form.Group className="signup-form-fields">
+                        <Form.Control type="text" name="username" placeholder="enter the username" value={formik.values.username} onBlur={formik.handleBlur} onChange={formik.handleChange}/>
+                        {formik.touched.username && formik.errors.username ? <Form.Text className="error-text">{formik.errors.username}</Form.Text> : null} 
                     </Form.Group>
-                    <Form.Group className="form-fields">
-                        <Form.Control type="email" name="email" placeholder="enter the email" value={formik.values.email} onBlur={formik.handleBlur} onChange={formik.handleChange} />  <br />
-                        {formik.touched.email && formik.errors.email ? <small>{formik.errors.email}</small> : null}
+                    <Form.Group className="signup-form-fields">
+                        <Form.Control type="email" name="email" placeholder="enter the email" value={formik.values.email} onBlur={formik.handleBlur} onChange={formik.handleChange} /> 
+                        {formik.touched.email && formik.errors.email ? <Form.Text className="error-text">{formik.errors.email}</Form.Text> : null}
                     </Form.Group>
-                    <Form.Group className="form-fields">
-                        <Form.Control type="password" name="password" placeholder="enter the password" value={formik.values.password} onBlur={formik.handleBlur} onChange={formik.handleChange} />  <br />
-                        {formik.touched.password && formik.errors.password ? <small>{formik.errors.password}</small>: null }  
+                    <Form.Group className="signup-form-fields">
+                        <Form.Control type="password" name="password" placeholder="enter the password" value={formik.values.password} onBlur={formik.handleBlur} onChange={formik.handleChange} />  
+                        {formik.touched.password && formik.errors.password ? <Form.Text className="error-text">{formik.errors.password}</Form.Text>: null }  
                     </Form.Group>
-                    <Form.Group className="form-fields">
-                        <Form.Control type="text" name="businessName" placeholder="enter your business name" value={formik.values.businessName} onBlur={formik.handleBlur} onChange={formik.handleChange} />  <br />
-                        {formik.touched.businessName && formik.errors.businessName ? <small>{formik.errors.businessName}</small> : null} 
+                    <Form.Group className="signup-form-fields">
+                        <Form.Control type="text" name="businessName" placeholder="enter your business name" value={formik.values.businessName} onBlur={formik.handleBlur} onChange={formik.handleChange} /> 
+                        {formik.touched.businessName && formik.errors.businessName ? <Form.Text className="error-text">{formik.errors.businessName}</Form.Text> : null} 
                     </Form.Group>
-                    <Form.Group className="form-fields">
-                        <Form.Control type="text" name="address" placeholder="enter the address" value={formik.values.address} onBlur={formik.handleBlur} onChange={formik.handleChange} /> <br />
-                        {formik.touched.address && formik.errors.address ? <small>{formik.errors.address}</small> : null} 
+                    <Form.Group className="signup-form-fields">
+                        <Form.Control type="text" name="address" placeholder="enter the address" value={formik.values.address} onBlur={formik.handleBlur} onChange={formik.handleChange} />
+                        {formik.touched.address && formik.errors.address ? <Form.Text className="error-text">{formik.errors.address}</Form.Text> : null} 
                     </Form.Group>
-                    <Button className="login-button" type="submit">Sign up</Button>
+                    <Button className="signup-button" type="submit">Sign up</Button>
                 </Form>
             </div>
         </div>

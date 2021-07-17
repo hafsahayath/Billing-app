@@ -1,0 +1,17 @@
+.add-product-container{
+    background-color: white;
+    box-shadow: 0 5px 5px -5px #888888;
+    margin-left: 30px;
+    width: 91vw;
+}
+
+.product-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.product-container h1 {
+    text-align: start;
+    padding-left: 20px;
+}
+

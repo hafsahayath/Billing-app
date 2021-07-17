@@ -1,26 +1,35 @@
 import React from 'react'
+import { Form, Button } from 'react-bootstrap'
+import '../../styles/customerStyles/formItem.css'
 
-const FormItem = ({formik, buttonName}) => {
+const FormItem = ({formik, buttonName, inline}) => {
     return (
         <div>
-            <form onSubmit={formik.handleSubmit}>
-                <div>
-                    <label>Name</label>
-                    <input type="text" name="name" value={formik.values.name} onBlur={formik.handleBlur} onChange={formik.handleChange} /> <br />
-                    {formik.touched.name && formik.errors.name ? <small>{formik.errors.name}</small> : null}
-                </div>
-                <div>
-                    <label>Mobile</label>
-                    <input type="text" name="mobile" value={formik.values.mobile} onBlur={formik.handleBlur} onChange={formik.handleChange} /> <br />
-                    {formik.touched.mobile && formik.errors.mobile ? <small>{formik.errors.mobile}</small> : null}
-                </div>
-                <div>
-                    <label>Email</label>
-                    <input type="text" name="email" value={formik.values.email} onBlur={formik.handleBlur} onChange={formik.handleChange} /> <br />
-                    {formik.touched.email && formik.errors.email ? <small>{formik.errors.email}</small> : null}
-                </div>
-                <button type="submit">{buttonName}</button>
-            </form>    
+            <Form className={inline? "form-inline":"form-column"} onSubmit={formik.handleSubmit}>
+                <Form.Group className="form-groups">
+                    <Form.Label className="form-labels">Name</Form.Label>
+                    <div className="col-text">
+                        <Form.Control type="text" name="name" value={formik.values.name} onBlur={formik.handleBlur} onChange={formik.handleChange} />
+                        {formik.touched.name && formik.errors.name ? <Form.Text className="error-text">{formik.errors.name}</Form.Text> : null}
+                    </div>
+                </Form.Group>
+                <Form.Group className="form-groups">
+                    <Form.Label className="form-labels">Mobile</Form.Label>
+                    <div className="col-text">
+                        <Form.Control type="text" name="mobile" value={formik.values.mobile} onBlur={formik.handleBlur} onChange={formik.handleChange} />
+                        {formik.touched.mobile && formik.errors.mobile ? <Form.Text className="error-text">{formik.errors.mobile}</Form.Text> : null}
+                    </div>
+                </Form.Group>
+                <Form.Group className="form-groups">
+                    <Form.Label className="form-labels">Email</Form.Label>
+                    <div className="col-text">
+                        <Form.Control type="text" name="email" value={formik.values.email} onBlur={formik.handleBlur} onChange={formik.handleChange} /> 
+                        {formik.touched.email && formik.errors.email ? <Form.Text className="error-text">{formik.errors.email}</Form.Text> : null}
+                    </div>
+                </Form.Group>
+                <Button type="submit">{buttonName}</Button>
+
+            </Form>    
         </div>
     )
 }

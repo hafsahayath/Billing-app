@@ -1,0 +1,37 @@
+.form-inline{
+    display: flex;
+    width: 91vw;
+    justify-content: space-around;
+    align-content: baseline;
+    padding: 30px;
+}
+
+.form-inline .form-groups {
+    margin-right: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.form-inline .form-groups .form-labels{
+    padding-right: 10px;
+}
+
+.form-inline .form-groups .col-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.error-text {
+    color: #dc3545;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    justify-content: center;
+    width: 450px;
+    padding-left: 15px;
+    /* align-items: center; */
+}

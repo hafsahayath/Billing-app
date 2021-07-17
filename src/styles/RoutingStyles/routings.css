@@ -1,0 +1,19 @@
+.side-bar {
+    background: #4D7DE3;
+    height: 100vh;
+    padding-top: 10px;
+}
+
+.main-content .side-bar {
+    align-content: center;
+    padding-top: 30px;
+}
+
+.main-content .side-bar .nav-option {
+    padding-bottom: 40px;
+    align-items: center;
+}
+
+.top-bar {
+    background: #F1F4F9;
+}

@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
 import { asyncAddProduct } from '../../actions/productActions'
 import FormItem from './FormItem'
+import '../../styles/productStyles/productForm.css'
 
 const ProductForm = (props) => {
 
@@ -29,9 +30,11 @@ const ProductForm = (props) => {
 
 
     return (
-        <div>
-            <h1>Add products</h1>
-            <FormItem formik={formik} buttonName="add"/>
+        <div className="product-container">
+            <h1>products</h1>
+        <div className="add-product-container">
+            <FormItem formik={formik} buttonName="add" inline={true}/>
+        </div>
         </div>
     )
 }

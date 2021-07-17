@@ -1,0 +1,25 @@
+.product-inline-form{
+    display: flex;
+    width: 91vw;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    padding-top: 25px;
+}
+
+.product-inline-form .product-form-groups {
+    margin-right: 10px;
+    display: flex; 
+    flex-direction: column;
+}
+
+
+.product-form-column {
+    display: flex;
+    align-items: baseline;
+    /* flex-direction: column; */
+}
+
+.product-form-column .product-form-groups{
+    margin-right: 5px;
+}

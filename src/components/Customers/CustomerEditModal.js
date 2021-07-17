@@ -19,12 +19,12 @@ const CustomerEditModal = (props) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <h4>Update Customer Details</h4>
-            <FormItem formik={formik} buttonName="save changes"/>
+            <h4 style={{textAlign:'center'}}>Update Customer Details</h4>
+            <FormItem formik={formik} buttonName="save changes" inline={false}/>
         </Modal.Body>
-        <Modal.Footer>
+        {/* <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     )
 }
