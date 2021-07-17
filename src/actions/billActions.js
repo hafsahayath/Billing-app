@@ -1,12 +1,8 @@
-import axios from 'axios'
+import axios from "../config/axiosConfig"
 
 export const asyncCreateBill = (billData) => {
     return (dispatch) => {
-        axios.post('http://dct-billing-app.herokuapp.com/api/bills', billData, {
-            headers:{
-                'Authorization':'Bearer '+localStorage.getItem('token')
-            }
-        })
+        axios.post('/bills', billData)
         .then((response)=>{
             const result = response.data
             if(result.hasOwnProperty('errors')){
@@ -23,11 +19,7 @@ export const asyncCreateBill = (billData) => {
 
 export const asyncGetBills = () => {
     return (dispatch) => {
-        axios.get('http://dct-billing-app.herokuapp.com/api/bills', {
-            headers:{
-                'Authorization':'Bearer '+localStorage.getItem('token')
-            }
-        })
+        axios.get('/bills')
         .then((response)=>{
             const result = response.data
             dispatch(getBills(result))
@@ -40,7 +32,7 @@ export const asyncGetBills = () => {
 
 export const asyncDeleteBill = (id) => {
     return (dispatch) => {
-        axios.delete(`http://dct-billing-app.herokuapp.com/api/bills/${id}`,{
+        axios.delete(`/bills/${id}`,{
             headers:{
                 'Authorization': 'Bearer '+localStorage.getItem('token')
             }

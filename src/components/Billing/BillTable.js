@@ -3,8 +3,8 @@ import { Table, Button } from 'react-bootstrap'
 
 const BillTable = ({bills, dateFormatter, findCustomer, customers, handleInvoice, handleDelete}) => {
     return (
-        <div style={{width:'100vw', paddingTop:'50px'}}>
-            <Table striped bordered hover size="lg">
+        <div style={{paddingTop:'50px'}}>
+            <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
                         <th>SlNo</th>

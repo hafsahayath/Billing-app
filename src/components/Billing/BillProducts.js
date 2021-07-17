@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Hint } from 'react-autocomplete-hint'
 import { useSelector } from 'react-redux'
+import { Button } from 'react-bootstrap'
 
 const BillProducts = (props) => {
     const products = useSelector(state=>state.products)
@@ -86,26 +87,38 @@ const BillProducts = (props) => {
     }
 
     return (
-        <div>
+        <div className="pt-3">
             { productDetails.map((ele,i)=>{
                     return (
-                        <div key={i}> 
-                            <label>Product name</label>
-                            <Hint options={productNames}>
-                                <input type="text" name="name" value={ele.name} onBlur={(e)=>handleAutoFill(e, i)} onChange={(e)=>handleChange(e, i)} />
-                            </Hint>
-                            <label>Quantity</label>
-                            <input type="number" name="quantity" value={ele.quantity} onChange={(e)=>handleChange(e, i)} onBlur={(e)=>handleBlur(e, i)}/>
-                            <label>Sub total</label>
-                            <input type="text" name="subTotal" value={ele.subTotal} disabled={true}/>
-                            <button onClick={()=>handleRemoveLineItem(i)}>remove</button>
+                        <div className="row align-items-end m-3" key={i}> 
+                            <div className="col">
+                                <label>Product name</label>
+                                <Hint options={productNames}>
+                                    <input className="form-control" type="text" name="name" value={ele.name} onBlur={(e)=>handleAutoFill(e, i)} onChange={(e)=>handleChange(e, i)} />
+                                </Hint>
+                            </div>
+                            <div className="col">
+                                <label>Quantity</label>
+                                <input className="form-control" type="number" name="quantity" value={ele.quantity} onChange={(e)=>handleChange(e, i)} onBlur={(e)=>handleBlur(e, i)}/>
+                            </div>
+                            <div className="col">
+                                <label>Sub total</label>
+                                <input className="form-control" type="text" name="subTotal" value={ele.subTotal} disabled={true}/>
+                            </div>
+                            <div className="col">
+                                <Button onClick={()=>handleRemoveLineItem(i)}>remove</Button>
+                            </div>
                         </div>
                     )
                 }) 
             }
-            <button onClick={handleAddLineItem}>add</button>
-            <label>Total</label>
-            <input type="text" value={grandTotal} disabled={true} />           
+            <div className="d-flex justify-content-end mr-5 pt-4">
+                <label>Total</label>
+                <input className="form-control col-3" type="text" value={grandTotal} disabled={true} />
+                <div className="mx-2">
+                    <Button onClick={handleAddLineItem}>add</Button>
+                </div>          
+            </div>
         </div>
     )
 }

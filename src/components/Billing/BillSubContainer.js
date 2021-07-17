@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Hint } from 'react-autocomplete-hint'
 import { useSelector, useDispatch } from 'react-redux'
+import { Button } from 'react-bootstrap'
 import BillProducts from './BillProducts'
 import { asyncCreateBill } from '../../actions/billActions'
 import InvoicePopUp from './InvoicePopUp'
@@ -52,22 +53,25 @@ const BillSubContainer = (props) => {
     }
 
     return (
-        <div>
-            <div>
-                <label>Date</label> &nbsp;
-                <input type="text" defaultValue={date} disabled={true} /> <br />
-            </div>
-            <Hint options={mobileNumbers}>
-                <input type="text" value={mobile} placeholder="Bill to" onBlur={handleAutoFill} onFocus={()=>setName()} onChange={(e)=>setMobile(e.target.value)} /> 
-            </Hint>
-            <div>
-                <label>Name</label>
-                <input type="text" defaultValue={name} disabled={true}/>
-            </div>
+        <div className="m-3">
+            <form className="col-4">
+                <div className="form-group">
+                    <label>Bill to</label>
+                    <Hint options={mobileNumbers}>
+                        <input className="form-control" type="text" value={mobile} placeholder="phone number" onBlur={handleAutoFill} onFocus={()=>setName()} onChange={(e)=>setMobile(e.target.value)} /> 
+                    </Hint>
+                </div>
+                <div className="form-group">
+                    <label>Name</label>
+                    <input className="form-control" type="text" defaultValue={name} disabled={true}/>
+                </div>
+            </form>
             <BillProducts 
                 addLineItem={addLineItem} 
             />
-            <button onClick={handleSubmit}>Create</button>
+            <div style={{position:'absolute', bottom:0, right:0}}>
+                <Button onClick={handleSubmit}>Create</Button>
+            </div>
 
             <InvoicePopUp
                 {...displayBillData}

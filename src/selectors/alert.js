@@ -28,3 +28,12 @@ export const swal = (text) => {
         }
       })
 }
+
+export const swalAuthAlert = (text) => {
+    Swal.fire({
+        position: 'top',
+        title: text,
+        showConfirmButton: false,
+        timer: 1500
+      })
+}

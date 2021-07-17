@@ -28,8 +28,8 @@ const CustomerItem = ({_id:id, name, mobile, email, i, toggleStatus}) => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-            dispatch(asyncDeleteCustomer(id))
-              swal('successfully deleted')
+                dispatch(asyncDeleteCustomer(id))
+                swal('successfully deleted')
             }
           })       
     }

@@ -1,12 +1,8 @@
-import axios from "axios"
+import axios from "../config/axiosConfig"
 
 export const asyncAddCustomer = (customerData) => {
     return (dispatch) => {
-        axios.post('http://dct-billing-app.herokuapp.com/api/customers', customerData, {
-            headers:{
-                'Authorization':'Bearer '+ localStorage.getItem('token')
-            }
-        })
+        axios.post('/customers', customerData)
         .then((response)=>{
             const result = response.data
             console.log(result)
@@ -21,11 +17,7 @@ export const asyncAddCustomer = (customerData) => {
 
 export const asyncGetCustomers = () => {
     return (dispatch) => {
-        axios.get('http://dct-billing-app.herokuapp.com/api/customers', {
-            headers:{
-                'Authorization':'Bearer '+ localStorage.getItem('token')
-            }
-        })
+        axios.get('/customers')
         .then((response)=>{
             const result = response.data
             dispatch(getCustomers(result))
@@ -38,11 +30,7 @@ export const asyncGetCustomers = () => {
 
 export const asyncEditCustomer = (id, updatedCustomerData) => {
     return (dispatch) => {
-        axios.put(`http://dct-billing-app.herokuapp.com/api/customers/${id}`, updatedCustomerData, {
-            headers:{
-                'Authorization':'Bearer '+localStorage.getItem('token')
-            }
-        })
+        axios.put(`/customers/${id}`, updatedCustomerData)
         .then((response)=>{
             const result = response.data
             if(result.hasOwnProperty('errors')){
@@ -56,11 +44,7 @@ export const asyncEditCustomer = (id, updatedCustomerData) => {
 
 export const asyncDeleteCustomer = (id) => {
     return (dispatch) => {
-        axios.delete(`http://dct-billing-app.herokuapp.com/api/customers/${id}`,{
-            headers:{
-                'Authorization':'Bearer '+localStorage.getItem('token')
-            }
-        })
+        axios.delete(`/customers/${id}`)
         .then((response)=>{
             const result = response.data
             dispatch(deleteCustomer(result._id))

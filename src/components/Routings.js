@@ -13,6 +13,7 @@ import { resetState } from "../actions/authActions";
 // import PrivateRoute from "./PrivateRoute";
 import BillList from "./Billing/BillList";
 import '../styles/RoutingStyles/routings.css'
+import { swalAuthAlert } from "../selectors/alert";
 
 const Routings = (props) => {
     const loggedIn = useSelector(state=>state.auth.loggedIn)
@@ -31,7 +32,7 @@ const Routings = (props) => {
 
     const handleLogout = () => {
         dispatch(resetState())
-        alert('logged out successfully')
+        swalAuthAlert('logged out successfully')
         localStorage.removeItem('token')
         // props.history.push('/')
     }

@@ -1,15 +1,16 @@
-import axios from "axios";
+import axios from "../config/axiosConfig";
+import { swalAuthAlert } from "../selectors/alert";
 
 export const asyncRegisterUser = (formData) => {
     return (dispatch) => {
-        axios.post('http://dct-billing-app.herokuapp.com/api/users/register', formData)
+        axios.post('/users/register', formData)
             .then((response)=>{
                 const result = response.data
                 console.log(result)
                 if(result.hasOwnProperty('errors')){
                     alert(result.errors)
                 } else {
-                    alert('registered successfully')
+                    swalAuthAlert('registered successfully')
                     dispatch(registerUser())
                 }
             })
@@ -21,13 +22,13 @@ export const asyncRegisterUser = (formData) => {
 
 export const asyncLoginUser = (formData) => {
     return (dispatch) => {
-        axios.post('http://dct-billing-app.herokuapp.com/api/users/login', formData)
+        axios.post('/users/login', formData)
             .then((response)=>{
                 const result = response.data
                 if(result.hasOwnProperty('errors')){
                     alert(result.errors)
                 } else {
-                    alert('logged in successfully')
+                    swalAuthAlert('logged in successfully')
                     localStorage.setItem('token', result.token)
                     dispatch(loginUser())
                 }

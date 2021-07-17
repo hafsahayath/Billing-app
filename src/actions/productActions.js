@@ -1,12 +1,8 @@
-import axios from 'axios'
+import axios from "../config/axiosConfig"
 
 export const asyncAddProduct = (productData) => {
     return  (dispatch) => {
-        axios.post('http://dct-billing-app.herokuapp.com/api/products', productData, {
-            headers:{
-                'Authorization':'Bearer '+ localStorage.getItem('token')
-            }
-        })
+        axios.post('/products', productData)
         .then((response)=>{
             const result = response.data
             dispatch(addProduct(result))
@@ -19,11 +15,7 @@ export const asyncAddProduct = (productData) => {
 
 export const asyncGetProducts = () => {
     return (dispatch) => {
-        axios.get('http://dct-billing-app.herokuapp.com/api/products',{
-            headers:{
-                'Authorization': 'Bearer ' + localStorage.getItem('token')
-            }
-        })
+        axios.get('/products')
         .then((response)=>{
             const result = response.data
             dispatch(getProducts(result))
@@ -36,11 +28,7 @@ export const asyncGetProducts = () => {
 
 export const asyncDeleteProduct = (id) => {
     return (dispatch) => {
-        axios.delete(`http://dct-billing-app.herokuapp.com/api/products/${id}`,{
-            headers:{
-                'Authorization': 'Bearer ' + localStorage.getItem('token')
-            }
-        })
+        axios.delete(`/products/${id}`)
         .then((response)=>{
             const result = response.data
             dispatch(deleteProduct(result._id))
@@ -53,11 +41,7 @@ export const asyncDeleteProduct = (id) => {
 
 export const asyncEditProduct = (id, updatedProductData) => {
     return (dispatch) => {
-        axios.put(`http://dct-billing-app.herokuapp.com/api/products/${id}`, updatedProductData, {
-            headers:{
-                'Authorization': 'Bearer ' + localStorage.getItem('token')
-            }
-        })
+        axios.put(`/products/${id}`, updatedProductData)
         .then((response)=>{
             const result = response.data
             if(result.hasOwnProperty('errors')){
