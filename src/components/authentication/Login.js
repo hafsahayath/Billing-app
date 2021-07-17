@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Button } from 'react-bootstrap'
 import { asyncLoginUser } from '../../actions/authActions'
+import { isEmpty } from 'lodash'
 import '../../styles/authStyles/login.css'
 
 const Login = (props) => {
+    const [serverErrors, setServerErrors ] = useState({})
     const loggedIn = useSelector(state=>state.auth.loggedIn)
 
     useEffect(()=>{
@@ -32,12 +34,16 @@ const Login = (props) => {
                 .required('password is required')
         }),
         onSubmit:values=>{
-            dispatch(asyncLoginUser(values))
+        const handleServerErrors = (errs) => {
+            setServerErrors(errs)
+        }
+        dispatch(asyncLoginUser(values, handleServerErrors))
         }
     })
 
     return (
         <div className="home-page-main-container">
+            { !isEmpty(serverErrors) && serverErrors.errors }           
             <div className="login-left-container">
                     <h4>Don't have an account?</h4>
                     <p>Own a small business? Or planning to start one?</p>

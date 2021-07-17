@@ -2,8 +2,19 @@ import React from 'react'
 import { Table, Button } from 'react-bootstrap'
 
 const BillTable = ({bills, dateFormatter, findCustomer, customers, handleInvoice, handleDelete}) => {
+
+    const tableStyle = {
+        padding:'10px',
+        paddingTop:'30px',
+        backgroundColor:'white',
+        width:'90vw',
+        minHeight:'80vh',
+        marginLeft:'10px',
+        boxShadow: '0 5px 5px -5px #888888'
+    }
+
     return (
-        <div style={{paddingTop:'50px'}}>
+        <div style={tableStyle}>
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>

@@ -45,21 +45,31 @@ const BillList = (props) => {
 
     return (
         <div>
-            <BillTable 
-                bills={bills} 
-                findCustomer={findCustomer} 
-                customers={customers} 
-                dateFormatter={dateFormatter} 
-                handleInvoice={handleInvoice} 
-                handleDelete={handleDelete} 
-            />
-            <InvoicePopUp
-                customer={customerDetails.customer}
-                date={customerDetails.date}
-                lineItems={customerDetails.lineItems}
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-            /> 
+            <h2 className="mx-2">Manage your bills</h2>
+            {bills.length > 0 ? (
+                <>
+                    <BillTable 
+                        bills={bills} 
+                        findCustomer={findCustomer} 
+                        customers={customers} 
+                        dateFormatter={dateFormatter} 
+                        handleInvoice={handleInvoice} 
+                        handleDelete={handleDelete} 
+                    />
+                    <InvoicePopUp
+                        customer={customerDetails.customer}
+                        date={customerDetails.date}
+                        lineItems={customerDetails.lineItems}
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                    /> 
+                </>
+            ):(
+                <div style={{paddingTop:'100px',paddingLeft:'500px'}}>
+                    <h2>No bills found</h2>
+                </div>
+            )}
+
         </div>
     )
 }

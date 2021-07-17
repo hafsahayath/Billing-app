@@ -1,13 +1,16 @@
 import axios from "../config/axiosConfig";
 import { swalAuthAlert } from "../selectors/alert";
+import { asyncGetAccDetails } from "./accountDetailsActions";
+import { asyncGetBills } from "./billActions";
+import { asyncGetCustomers } from "./customerActions";
+import { asyncGetProducts } from "./productActions";
 
 export const asyncRegisterUser = (formData) => {
     return (dispatch) => {
         axios.post('/users/register', formData)
             .then((response)=>{
                 const result = response.data
-                console.log(result)
-                if(result.hasOwnProperty('errors')){
+                if(result.hasOwnProperty('errors')){ // mongo error recheck!!
                     alert(result.errors)
                 } else {
                     swalAuthAlert('registered successfully')
@@ -20,17 +23,31 @@ export const asyncRegisterUser = (formData) => {
     }
 }
 
-export const asyncLoginUser = (formData) => {
+export const asyncLoginUser = (formData, handleServerErrors) => {
     return (dispatch) => {
         axios.post('/users/login', formData)
             .then((response)=>{
                 const result = response.data
                 if(result.hasOwnProperty('errors')){
-                    alert(result.errors)
+                    // alert(result.errors)
+                    handleServerErrors(result)
                 } else {
                     swalAuthAlert('logged in successfully')
                     localStorage.setItem('token', result.token)
-                    dispatch(loginUser())
+                    // Promise.all([
+                    //     axios.get('/bills'),
+                    //     axios.get('/customers'),
+                    //     axios.get('/products')
+                    // ]).then((values) => {
+                    //     const [bills, customers, products] = values 
+                    //     dispatch(getBills(bills))
+                    // })
+                    window.location.reload() // pick up token for axios instance 
+                    // dispatch(asyncGetAccDetails())
+                    // dispatch(asyncGetBills())
+                    // dispatch(asyncGetCustomers())
+                    // dispatch(asyncGetProducts())
+                    // dispatch(loginUser())
                 }
             })
             .catch((err)=>{

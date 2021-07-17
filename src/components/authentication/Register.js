@@ -8,6 +8,7 @@ import { asyncRegisterUser } from '../../actions/authActions'
 import '../../styles/authStyles/register.css'
 
 const Register = (props) => {
+
     const isRegistered = useSelector(state=>state.auth.register)
 
     
@@ -44,12 +45,14 @@ const Register = (props) => {
         }),
         onSubmit:values=>{
             // console.log(values)
+
             dispatch(asyncRegisterUser(values))
         }
     })
 
     return (
         <div className="home-page-main-container">
+
             <div className="signup-left-container">
                 <h2>Already signed up?</h2>
                 <p>Login for instant access to your business data</p>

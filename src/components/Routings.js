@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Route, withRouter, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { Dropdown, Navbar,NavDropdown, Nav, Container } from "react-bootstrap";
+import { Dropdown, Navbar,NavDropdown, Nav, Container, Button } from "react-bootstrap";
 import Register from "./authentication/Register";
 import Login from "./authentication/Login";
 import Dashboard from "./Dashboard/Dashboard";
@@ -43,7 +43,7 @@ const Routings = (props) => {
                 loggedIn  &&
                 <div className="container-fluid">
                     <div className="row main-content">
-                        <div className="col-0.5 px-3 nav flex-column side-bar">
+                        <div className="col-1 px-3 nav flex-column side-bar">
                             <div className="nav-option">
                                 <Link style={linkStylePrimary} to="/account"><i className="fas fa-user-circle fa-2x"></i></Link>
                             </div>
@@ -63,7 +63,7 @@ const Routings = (props) => {
                                 <Link style={linkStylePrimary} to="/listing-bills"><i className="fas fa-copy fa-2x px-1"></i></Link>
                             </div>
                         </div>
-                        <div className="col-10">
+                        <div className="col-11">
                             <div className="row justify-content-end">
                                     <Link style={linkStyleSecondary} to="/" onClick={handleLogout}>Logout</Link>
                             </div>
@@ -86,6 +86,7 @@ const Routings = (props) => {
                                 <Route path="/listing-bills" render={(props)=>{
                                     return loggedIn ? <BillList {...props}/> : <Redirect to="/" />
                                 }}/>
+
                             </div>
                         </div>
                     </div>

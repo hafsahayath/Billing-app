@@ -69,13 +69,13 @@ const ProductList = (props) => {
                 </div>
             </div>
             <div>
-                <Table striped bordered hover>
+                <Table className="w-75 text-center" striped bordered hover size="sm">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th></th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>

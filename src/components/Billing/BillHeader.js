@@ -16,8 +16,8 @@ const BillHeader = (props) => {
                     </Card.Text>
                 </Card.Body>
             </Card>
-            <div className="form-group d-flex px-2">
-                <label className="px-1 col-2">Date</label>
+            <div className="form-group d-flex justify-content-end">
+                <label className="px-1 col-2 my-1">Date</label>
                 <input className="form-control col-6" type="text" defaultValue={date} disabled={true}/>
             </div>
         </div>

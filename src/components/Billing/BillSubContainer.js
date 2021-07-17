@@ -47,6 +47,8 @@ const BillSubContainer = (props) => {
             dispatch(asyncCreateBill(billData))
             setDisplayBillData(billData)
             setModalShow(true)
+            setName('')
+            setMobile('')
         } else {
             alert('empty fields')
         }
@@ -54,14 +56,14 @@ const BillSubContainer = (props) => {
 
     return (
         <div className="m-3">
-            <form className="col-4">
-                <div className="form-group">
+            <form className="row mx-3">
+                <div className="form-group col-4">
                     <label>Bill to</label>
                     <Hint options={mobileNumbers}>
                         <input className="form-control" type="text" value={mobile} placeholder="phone number" onBlur={handleAutoFill} onFocus={()=>setName()} onChange={(e)=>setMobile(e.target.value)} /> 
                     </Hint>
                 </div>
-                <div className="form-group">
+                <div className="form-group col-4">
                     <label>Name</label>
                     <input className="form-control" type="text" defaultValue={name} disabled={true}/>
                 </div>
@@ -69,7 +71,7 @@ const BillSubContainer = (props) => {
             <BillProducts 
                 addLineItem={addLineItem} 
             />
-            <div style={{position:'absolute', bottom:0, right:0}}>
+            <div className="row justify-content-end mx-3">
                 <Button onClick={handleSubmit}>Create</Button>
             </div>
 
