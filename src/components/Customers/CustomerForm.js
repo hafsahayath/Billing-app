@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { asyncAddCustomer } from '../../actions/customerActions'
 import FormItem from './FormItem'
 import '../../styles/customerStyles/customerForm.css'
+import { swal } from '../../selectors/alert'
 
 const CustomerForm = (props) => {
 
@@ -27,6 +28,7 @@ const CustomerForm = (props) => {
         }),
         onSubmit:(values, {resetForm})=>{
             dispatch(asyncAddCustomer(values))
+            swal('customer added!')
             resetForm({values:''})
         }
     })

@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import { useDispatch } from 'react-redux'
 import { Button } from 'react-bootstrap'
+import Swal from 'sweetalert2'
 import * as Yup from 'yup'
 import ProductEditModal from './ProductEditModal'
 import { asyncDeleteProduct, asyncEditProduct } from '../../actions/productActions'
+import { swal } from '../../selectors/alert'
 
 const ProductItem = ({_id:id, name, price, i, editToggle, resetSearch}) => {
     const [modalShow, setModalShow] = useState(false)
@@ -16,10 +18,20 @@ const ProductItem = ({_id:id, name, price, i, editToggle, resetSearch}) => {
     }
 
     const handleDelete = () => {
-        const confirmRemove = window.confirm("Are you sure?")
-        if(confirmRemove){
-            dispatch(asyncDeleteProduct(id))
-        }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(asyncDeleteProduct(id))
+                swal('successfully deleted')
+            }
+          })  
     }
 
     const formik = useFormik({
@@ -35,6 +47,7 @@ const ProductItem = ({_id:id, name, price, i, editToggle, resetSearch}) => {
         }),
         onSubmit:(values)=>{
             dispatch(asyncEditProduct(id, values))
+            swal('Saved changes!')
             resetSearch()
             setModalShow(false)
         }

@@ -1,6 +1,7 @@
 .side-bar {
     background: #4D7DE3;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     padding-top: 10px;
 }
 

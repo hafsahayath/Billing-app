@@ -23,7 +23,7 @@ const FormItem = ({formik, buttonName, inline}) => {
                 <Form.Group className="form-groups">
                     <Form.Label className="form-labels">Email</Form.Label>
                     <div className="col-text">
-                        <Form.Control type="text" name="email" value={formik.values.email} onBlur={formik.handleBlur} onChange={formik.handleChange} /> 
+                        <Form.Control type="text" name="email" value={formik.values.email} onBlur={formik.handleBlur} onChange={formik.handleChange} />
                         {formik.touched.email && formik.errors.email ? <Form.Text className="error-text">{formik.errors.email}</Form.Text> : null}
                     </div>
                 </Form.Group>
