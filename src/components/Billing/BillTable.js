@@ -15,12 +15,13 @@ const BillTable = ({bills, dateFormatter, findCustomer, customers, handleInvoice
 
     return (
         <div style={tableStyle}>
-            <Table striped bordered hover size="sm">
+            <Table striped bordered hover className="text-center" size="sm">
                 <thead>
                     <tr>
                         <th>SlNo</th>
                         <th>Date</th>
-                        <th>Customer</th>
+                        <th>Customer(Name)</th>
+                        <th>Customer(Mobile)</th>
                         <th>Total</th>
                     </tr>
                 </thead>
@@ -30,6 +31,7 @@ const BillTable = ({bills, dateFormatter, findCustomer, customers, handleInvoice
                             <tr key={ele._id}>
                                 <td>{i+1}</td>
                                 <td>{dateFormatter(ele.date)}</td>
+                                <td>{findCustomer(ele.customer, customers).name}</td>
                                 <td>{findCustomer(ele.customer, customers).mobile}</td>
                                 <td>{ele.total}</td>
                                 <td style={{textAlign:'center'}}><a href="#" onClick={()=>handleInvoice(ele)}> invoice</a>&nbsp;<Button onClick={()=>handleDelete(ele._id)}>delete</Button></td>

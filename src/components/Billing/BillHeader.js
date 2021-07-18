@@ -7,7 +7,7 @@ const BillHeader = (props) => {
     const account = useSelector(state=>state.account)
     const date = dateFormatter(new Date().toISOString())
     return (
-        <div style={{display:'flex', justifyContent:'space-between',margin:'30px'}}>
+        <div style={{display:'flex', justifyContent:'space-between',margin:'20px'}}>
             <Card style={{ width: '12rem', textAlign:'center' }}>
                 <Card.Body>
                     <Card.Title>{account.businessName}</Card.Title>

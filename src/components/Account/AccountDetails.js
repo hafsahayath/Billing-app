@@ -31,7 +31,7 @@ const AccountDetails = (props) => {
                         <Card.Title>{account.businessName}</Card.Title>
                         <Card.Text>
                             <strong>{account.username}</strong> <br />
-                            <address>{account.address}</address>
+                            {account.address}
                         </Card.Text>
                         <Link to="/dashboard">Quick Access</Link>
                     </Card.Body>

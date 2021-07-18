@@ -9,18 +9,24 @@ const BillProducts = (props) => {
     const [product, setProduct] = useState({})
     const [grandTotal, setGrandTotal] = useState('')
 
-    const { addLineItem } = props
+    const { addLineItem, modalShow } = props
 
     useEffect(()=>{
         const res = productDetails.reduce((acc, curr)=>acc+curr.subTotal,0)
         setGrandTotal(res)
     },[productDetails])
 
+    useEffect(()=>{
+        if(modalShow){
+            setProductDetails([{id:'', name:'', quantity:'', subTotal:''}])
+        }
+    },[modalShow])
+
     const productNames = products.map(ele=>ele.name)
 
     const handleAutoFill = (e, index) => {
         const productName = e.target.value
-        const productFind = products.find(ele=>ele.name===productName)
+        const productFind = products.find(ele=>ele.name===productName) 
         if(productFind){
             const res = productDetails.map((ele, i)=>{
                 if(index === i){
@@ -50,7 +56,7 @@ const BillProducts = (props) => {
         const { name, value } = e.target
         const res = productDetails.map((ele,i)=>{
             if(index === i){
-                return {...ele, [name]:value}
+                return {...ele, [name]:value, subTotal:0}
             } else {
                 return ele
             }
@@ -72,7 +78,7 @@ const BillProducts = (props) => {
     const handleBlur = (e, index) => {
         const res = productDetails.map((ele,i)=>{
             if(i===index){
-                return {...ele, subTotal:product.price*ele.quantity}
+                return {...ele, subTotal:ele.quantity*product.price}
             } else {
                 return ele
             }
@@ -121,11 +127,11 @@ const BillProducts = (props) => {
                                 <div className="col-2">
                                     {
                                         productDetails.length > 1 && 
-                                        <button style={btnDangerStyles} onClick={()=>handleRemoveLineItem(i)}><i class="fas fa-minus-square fa-2x"></i></button>
+                                        <button style={btnDangerStyles} onClick={()=>handleRemoveLineItem(i)}><i class="fas fa-minus"></i></button>
                                     }
                                     {
                                         i === productDetails.length - 1 &&
-                                        <button style={btnStyles} className="col-1 w-75 mx-4" onClick={handleAddLineItem}><i class="fas fa-plus-square fa-2x"></i></button>
+                                        <button style={btnStyles} className="col-1 w-75 mx-4" onClick={handleAddLineItem}><i class="fas fa-plus"></i></button>
                                     }
                                     </div>
                                 </div>

@@ -63,7 +63,7 @@ const CustomerItem = ({_id:id, name, mobile, email, i, toggleStatus}) => {
                 <td>{name}</td>
                 <td>{mobile}</td>
                 <td>{email}</td>
-                <td colSpan="2" style={{textAlign:'center'}}><Button variant="primary" onClick={handleEdit}>edit</Button>&nbsp;<Button variant="danger" onClick={handleDelete}>delete</Button></td>
+                <td style={{border:'none'}} colSpan="2" style={{textAlign:'center'}}><Button variant="primary" onClick={handleEdit}><i class="fas fa-user-edit"></i></Button>&nbsp;<Button variant="danger" onClick={handleDelete}><i class="fas fa-user-minus"></i></Button></td>
             </tr>
 
             <CustomerEditModal

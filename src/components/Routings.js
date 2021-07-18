@@ -65,7 +65,7 @@ const Routings = (props) => {
                         </div>
                         <div className="col-11">
                             <div className="row justify-content-end">
-                                    <Link style={linkStyleSecondary} to="/" onClick={handleLogout}>Logout</Link>
+                                    <Link style={linkStyleSecondary} to="/" onClick={handleLogout}><i style={{color:'#dc3545'}} className="fas fa-sign-out-alt fa-3x my-1 px-3"></i></Link>
                             </div>
                             <div className="row">
                                 <Route path="/dashboard" render={(props)=>{

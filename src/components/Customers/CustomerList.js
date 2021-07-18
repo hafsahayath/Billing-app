@@ -41,7 +41,7 @@ const CustomerList = (props) => {
                 <Form.Control type="text" value={search} placeholder="search by name or number" onChange={handleSearchChange} />
             </div>
             <div className="table-component">
-                <Table striped bordered hover size="md">
+                <Table striped bordered hover size="sm" >
                     <thead>
                         <tr>
                             <th>#</th>

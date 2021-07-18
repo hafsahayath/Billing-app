@@ -43,7 +43,7 @@ const BillSubContainer = (props) => {
             customer: id,
             lineItems: lineItems
         }
-        if(billData.customer){
+        if(billData.customer && billData.lineItems.length>0){
             dispatch(asyncCreateBill(billData))
             setDisplayBillData(billData)
             setModalShow(true)
@@ -55,7 +55,7 @@ const BillSubContainer = (props) => {
     }
 
     return (
-        <div className="m-3">
+        <div className="m-3 pt-3">
             <form className="row mx-3">
                 <div className="form-group col-4">
                     <label>Bill to</label>
@@ -69,8 +69,9 @@ const BillSubContainer = (props) => {
                 </div>
             </form>
             <BillProducts 
-                addLineItem={addLineItem} 
+                addLineItem={addLineItem} modalShow={modalShow}
             />
+
             <div className="row justify-content-end mx-3">
                 <Button onClick={handleSubmit}>Create</Button>
             </div>
