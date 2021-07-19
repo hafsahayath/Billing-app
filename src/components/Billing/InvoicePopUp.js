@@ -1,14 +1,18 @@
 import { Modal, Button } from "react-bootstrap";
 import { useSelector } from 'react-redux'
+import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 import BillHeader from "./BillHeader";
-
 // import { findProduct } from "../../selectors/billing";
+
  
 const InvoicePopUp = (props) => {
   const { customer, date, lineItems } = props
 
   const customers = useSelector(state=>state.customers)
   const products = useSelector(state=>state.products)
+
+  const printComponentRef = useRef()
 
   const findCustomer = (id, array) => {
     const item = array.find(ele=>{
@@ -28,6 +32,17 @@ const InvoicePopUp = (props) => {
     return findProduct(ele.product, products).price*ele.quantity
     }).reduce((acc,curr)=>acc+curr,0)
 
+    const pageStyle = `
+      @page {
+        margin-top: 30mm;
+      }`;
+
+      
+    const printBill = useReactToPrint({
+      content:() => printComponentRef.current,
+      pageStyle: pageStyle
+    })
+
     return (
       <Modal
         {...props}
@@ -40,7 +55,7 @@ const InvoicePopUp = (props) => {
             Invoice
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body style={{margin:"0", padding:"0"}}>
+        <Modal.Body ref={printComponentRef} style={{margin:"0", padding:"10px", border:'1px solid #eee'}}>
           <div className="row m-1">
             <div className="flex-column col-12">
               <BillHeader />
@@ -88,7 +103,7 @@ const InvoicePopUp = (props) => {
         </Modal.Body>
         <Modal.Footer>
           {/* <Button onClick={props.onHide}>Close</Button> */}
-          <Button className="col-2 m-2">Print</Button>
+          <Button onClick={printBill} className="col-2 m-2">Print</Button>
         </Modal.Footer>
       </Modal>
     );

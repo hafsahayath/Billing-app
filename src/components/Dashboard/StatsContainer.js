@@ -16,10 +16,10 @@ const StatsContainer = (props) => {
     const totalProductsInInventory = products.length
 
     return (
-        <div>
+        <div className="mx-4">
             { customers && bills && products ?
             <>
-                <div className="row mt-2 mx-2">
+                <div className="row d-flex mt-2 ml-1">
                     <div className="col-3">
                         <Stats variant="Info" Header="Customers" value={totalCustomers}/>
                     </div>
@@ -33,17 +33,17 @@ const StatsContainer = (props) => {
                         <Stats variant="Danger" Header="Inventory" value={totalProductsInInventory}/>
                     </div>
                 </div>
-                <div className="row mt-2 mx-2">
-                    <div className="col-4">
+                <div className="row d-flex justify-content-center mt-2">
+                    <div className="col-3 mr-5">
                         <CustomersChart bills={bills} customers={customers}/>
                     </div>
-                    <div className="col-8 table-top-bills">
-                        <strong>Top 5 products</strong>
+                    <div className="col-8 table-top-bills ml-3">
+                        <p style={{textDecoration:'underline'}}><b>Top 5 products</b></p>
                         <TopProductsSold products={products} bills={bills}/>                   
                     </div>
                 </div>
-                <div className="row mt-2 mx-4">
-                    <div className="col table-top-bills">
+                <div className="row mx-3 mt-3">
+                    <div style={{backgroundColor: "white", boxShadow: '0 5px 5px -5px #888888', marginLeft:'10px'}} className="col">
                         <TableTopOrders bills={bills} customers={customers}/>
                     </div>
                 </div>

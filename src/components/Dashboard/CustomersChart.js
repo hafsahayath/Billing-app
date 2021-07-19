@@ -35,7 +35,7 @@ const CustomersChart = ({customers, bills}) => {
 
     return (
         <div>
-            <div id="piechart" style={{height:'350px', width:'400px', boxShadow: '0 5px 5px -5px #888888'}}></div>
+            <div id="piechart" style={{height:'350px', width:'380px', boxShadow: '0 5px 5px -5px #888888'}}></div>
         </div>
     )
 }

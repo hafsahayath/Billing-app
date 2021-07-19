@@ -24,7 +24,7 @@ const AccountDetails = (props) => {
     },[])
 
     return (
-        <div style={centerStyle}>
+        <div className="animate__animated animate__zoomIn" style={centerStyle}>
             <Card className="text-center">
                 <Card.Header>Account Details</Card.Header>
                     <Card.Body>

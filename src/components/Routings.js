@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, Route, withRouter, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { Dropdown, Navbar,NavDropdown, Nav, Container, Button } from "react-bootstrap";
 import Register from "./authentication/Register";
 import Login from "./authentication/Login";
 import Dashboard from "./Dashboard/Dashboard";
@@ -38,26 +37,28 @@ const Routings = (props) => {
                 loggedIn  &&
                 <div className="container-fluid">
                     <div className="row main-content">
-                        <div className="col-1 px-3 nav flex-column side-bar">
-                            <div className="nav-option">
-                                <Link style={linkStylePrimary} to="/account"><i className="fas fa-user-circle fa-2x"></i></Link>
+                        <div className="col-1 px-3 nav flex-column d-flex justify-content-between side-bar">
+                            <div>
+                                <div className="nav-option">
+                                    <Link style={linkStylePrimary} to="/account"><i className="fas fa-user-circle fa-2x"></i></Link>
+                                </div>
+                                <div className="nav-option">
+                                    <Link style={linkStylePrimary} to="/dashboard"><i className="fas fa-home fa-2x"></i></Link>
+                                </div>
+                                <div className="nav-option">
+                                    <Link style={linkStylePrimary} to="/customers"><i className="fas fa-user-friends fa-2x"></i></Link>
+                                </div>
+                                <div className="nav-option">
+                                    <Link style={linkStylePrimary} to="/products"><i className="fas fa-box-open fa-2x"></i></Link>
+                                </div>
+                                <div className="nav-option">
+                                    <Link style={linkStylePrimary} to="/bills"><i class="fas fa-file-invoice fa-2x px-1"></i></Link>
+                                </div>
+                                <div className="nav-option">
+                                    <Link style={linkStylePrimary} to="/listing-bills"><i className="fas fa-copy fa-2x px-1"></i></Link>
+                                </div>
                             </div>
                             <div className="nav-option">
-                                <Link style={linkStylePrimary} to="/dashboard"><i className="fas fa-home fa-2x"></i></Link>
-                            </div>
-                            <div className="nav-option">
-                                <Link style={linkStylePrimary} to="/customers"><i className="fas fa-user-friends fa-2x"></i></Link>
-                            </div>
-                            <div className="nav-option">
-                                <Link style={linkStylePrimary} to="/products"><i className="fas fa-box-open fa-2x"></i></Link>
-                            </div>
-                            <div className="nav-option">
-                                <Link style={linkStylePrimary} to="/bills"><i class="fas fa-file-invoice fa-2x px-1"></i></Link>
-                            </div>
-                            <div className="nav-option">
-                                <Link style={linkStylePrimary} to="/listing-bills"><i className="fas fa-copy fa-2x px-1"></i></Link>
-                            </div>
-                            <div style={{paddingTop:'170px'}} className="nav-option">
                                 <Link style={linkStylePrimary} to="/" onClick={handleLogout}><i style={{color:'#dc3545'}} className="fas fa-sign-out-alt fa-2x fa-rotate-180"></i></Link>
                             </div>
                         </div>
