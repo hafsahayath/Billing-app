@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import CustomerEditModal from './CustomerEditModal';
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 import { asyncEditCustomer, asyncDeleteCustomer } from '../../actions/customerActions'
@@ -15,6 +14,12 @@ const CustomerItem = ({_id:id, name, mobile, email, i, toggleStatus}) => {
     const handleEdit = () =>{
         setModalShow(true)
         toggleStatus()
+    }
+
+    const btnStyle={
+        background: 'none',
+        border: 'none',
+        color:'#d9534f'
     }
 
     const handleDelete = () => {
@@ -63,7 +68,7 @@ const CustomerItem = ({_id:id, name, mobile, email, i, toggleStatus}) => {
                 <td>{name}</td>
                 <td>{mobile}</td>
                 <td>{email}</td>
-                <td style={{border:'none'}} colSpan="2" style={{textAlign:'center'}}><Button variant="primary" onClick={handleEdit}><i class="fas fa-user-edit"></i></Button>&nbsp;<Button variant="danger" onClick={handleDelete}><i class="fas fa-user-minus"></i></Button></td>
+                <td colSpan="2" style={{textAlign:'center'}}><button style={{border:'none', background:'transparent',color:'#0275d8'}} onClick={handleEdit}><i class="fas fa-user-edit"></i></button>&nbsp;<button style={btnStyle} onClick={handleDelete}><i class="fas fa-user-minus"></i></button></td>
             </tr>
 
             <CustomerEditModal

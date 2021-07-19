@@ -25,11 +25,6 @@ const Routings = (props) => {
         color:'white'
     }
 
-    const linkStyleSecondary = {
-        textDecoration:'none',
-        color:'black'
-    }
-
     const handleLogout = () => {
         dispatch(resetState())
         swalAuthAlert('logged out successfully')
@@ -62,11 +57,11 @@ const Routings = (props) => {
                             <div className="nav-option">
                                 <Link style={linkStylePrimary} to="/listing-bills"><i className="fas fa-copy fa-2x px-1"></i></Link>
                             </div>
+                            <div style={{paddingTop:'170px'}} className="nav-option">
+                                <Link style={linkStylePrimary} to="/" onClick={handleLogout}><i style={{color:'#dc3545'}} className="fas fa-sign-out-alt fa-2x fa-rotate-180"></i></Link>
+                            </div>
                         </div>
                         <div className="col-11">
-                            <div className="row justify-content-end">
-                                    <Link style={linkStyleSecondary} to="/" onClick={handleLogout}><i style={{color:'#dc3545'}} className="fas fa-sign-out-alt fa-3x my-1 px-3"></i></Link>
-                            </div>
                             <div className="row">
                                 <Route path="/dashboard" render={(props)=>{
                                     return loggedIn ? <Dashboard {...props}/> : <Redirect to="/" />

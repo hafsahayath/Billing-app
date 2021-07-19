@@ -1,7 +1,7 @@
 .product-inline-form{
     display: flex;
     width: 91vw;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     padding: 5px;
     padding-top: 25px;

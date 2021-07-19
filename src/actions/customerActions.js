@@ -5,7 +5,7 @@ export const asyncAddCustomer = (customerData) => {
         axios.post('/customers', customerData)
         .then((response)=>{
             const result = response.data
-            console.log(result)
+            console.log('customers',result)
             if(result.hasOwnProperty('errors')){
                 alert(result.errors)
             } else {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Hint } from 'react-autocomplete-hint'
 import { useSelector, useDispatch } from 'react-redux'
+import { withRouter } from 'react-router'
 import { Button } from 'react-bootstrap'
 import BillProducts from './BillProducts'
 import { asyncCreateBill } from '../../actions/billActions'
@@ -30,6 +31,7 @@ const BillSubContainer = (props) => {
         } else {
             alert('customer does not exist')
             setMobile('')
+            props.history.push('/customers')
         }
     }
 
@@ -86,4 +88,4 @@ const BillSubContainer = (props) => {
     )
 }
 
-export default BillSubContainer
+export default withRouter(BillSubContainer)
