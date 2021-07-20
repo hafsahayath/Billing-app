@@ -42,8 +42,7 @@ const Login = (props) => {
     })
 
     return (
-        <div className="home-page-main-container">
-            { !isEmpty(serverErrors) && serverErrors.errors }           
+        <div className="home-page-main-container">         
             <div className="login-left-container">
                     <h4>Don't have an account?</h4>
                     <p>Own a small business? Or planning to start one?</p>
@@ -62,6 +61,7 @@ const Login = (props) => {
                         <Form.Control type="password" name="password" placeholder="enter the password" value={formik.values.password} onBlur={formik.handleBlur} onChange={formik.handleChange} />
                         {formik.touched.password && formik.errors.password ? <Form.Text className="error-text">{formik.errors.password}</Form.Text>: null }  
                     </Form.Group>
+                    { !isEmpty(serverErrors) && serverErrors.errors }  
                     <Button className="login-button" variant="primary" type="submit">Login</Button>
                 </Form>
             </div>

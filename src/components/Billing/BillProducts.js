@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Hint } from 'react-autocomplete-hint'
 import { useSelector } from 'react-redux'
-import { Button } from 'react-bootstrap'
 
 const BillProducts = (props) => {
     const products = useSelector(state=>state.products)
@@ -84,6 +83,8 @@ const BillProducts = (props) => {
             }
         })
         setProductDetails(res)
+
+        //build line items
         const lineItems = res.map(ele=>{
             if(ele.name && ele.quantity){
                 return {product: ele.id, quantity: ele.quantity}
