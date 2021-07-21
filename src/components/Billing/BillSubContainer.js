@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap'
 import BillProducts from './BillProducts'
 import { asyncCreateBill } from '../../actions/billActions'
 import InvoicePopUp from './InvoicePopUp'
-
+import { swalError } from '../../selectors/alert'
 
 const BillSubContainer = (props) => {
     const customers = useSelector(state=>state.customers)
@@ -52,7 +52,7 @@ const BillSubContainer = (props) => {
             setName('')
             setMobile('')
         } else {
-            alert('empty fields')
+            swalError('empty fields')
         }
     }
 

@@ -37,3 +37,11 @@ export const swalAuthAlert = (text) => {
         timer: 1500
       })
 }
+
+export const swalError = (text) => {
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: text
+  })
+}

@@ -109,8 +109,8 @@ const BillProducts = (props) => {
         <div className="pt-3">
             { productDetails.map((ele,i)=>{
                     return (
-                        <>
-                            <div className="row align-items-end m-3" key={i}> 
+                        <div key={i}>
+                            <div className="row align-items-end m-3"> 
                                 <div className="col-4">
                                     <label>Product name</label>
                                     <Hint options={productNames}>
@@ -136,7 +136,7 @@ const BillProducts = (props) => {
                                     }
                                     </div>
                                 </div>
-                            </>
+                            </div>
 
                     )
                 }) 

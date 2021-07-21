@@ -18,6 +18,12 @@ const Login = (props) => {
         }
     },[loggedIn])
 
+    useEffect(()=>{
+            setTimeout(()=>{
+                setServerErrors({})
+            },7000)
+    },[serverErrors])
+
     const dispatch = useDispatch()
 
     const formik = useFormik({
@@ -61,7 +67,11 @@ const Login = (props) => {
                         <Form.Control type="password" name="password" placeholder="enter the password" value={formik.values.password} onBlur={formik.handleBlur} onChange={formik.handleChange} />
                         {formik.touched.password && formik.errors.password ? <Form.Text className="error-text">{formik.errors.password}</Form.Text>: null }  
                     </Form.Group>
-                    { !isEmpty(serverErrors) && serverErrors.errors }  
+                    { !isEmpty(serverErrors) && 
+                    <div className="alert alert-danger" role="alert">
+                        {serverErrors.errors}
+                    </div>
+                    }  
                     <Button className="login-button" variant="primary" type="submit">Login</Button>
                 </Form>
             </div>
