@@ -19,9 +19,12 @@ const Login = (props) => {
     },[loggedIn])
 
     useEffect(()=>{
-            setTimeout(()=>{
-                setServerErrors({})
-            },7000)
+        const timerVar = setTimeout(()=>{ 
+                setServerErrors({}) }
+            ,2000)
+            return () => {
+                clearTimeout(timerVar)
+            }
     },[serverErrors])
 
     const dispatch = useDispatch()
@@ -36,7 +39,7 @@ const Login = (props) => {
                 .email('invalid email address')
                 .required('email is required'),
             password:Yup.string()
-                .min(6, 'password must be atleast 6 characters')
+                .min(8, 'password must be atleast 6 characters')
                 .required('password is required')
         }),
         onSubmit:values=>{
