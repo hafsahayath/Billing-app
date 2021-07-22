@@ -10,8 +10,9 @@ export const asyncRegisterUser = (formData) => {
         axios.post('/users/register', formData)
             .then((response)=>{
                 const result = response.data
-                if(result.hasOwnProperty('errors')){ // mongo error recheck!!
-                    alert(result.errors)
+                console.log(result)
+                if(result.hasOwnProperty('errmsg')){ // mongo error recheck!!
+                    alert(result.errmsg)
                 } else {
                     swalAuthAlert('registered successfully')
                     dispatch(registerUser())

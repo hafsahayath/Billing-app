@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
 import * as Yup from 'yup'
@@ -8,7 +8,6 @@ import { asyncRegisterUser } from '../../actions/authActions'
 import '../../styles/authStyles/register.css'
 
 const Register = (props) => {
-
     const isRegistered = useSelector(state=>state.auth.register)
 
     
@@ -44,8 +43,6 @@ const Register = (props) => {
                 .required('business address is required')
         }),
         onSubmit:values=>{
-            // console.log(values)
-
             dispatch(asyncRegisterUser(values))
         }
     })
