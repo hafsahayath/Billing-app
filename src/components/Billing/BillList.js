@@ -23,9 +23,9 @@ const BillList = (props) => {
         return item ? {...item} : {} 
     }
 
-    const dateFormatter = (date) => {
-        return date.slice(0,10).split('-').reverse().join('-')
-    }
+    const dateFormatter = (date) =>{
+        return date.split('T')[0]
+     }
 
     const handleDelete = (id) => {
         dispatch(asyncDeleteBill(id))
@@ -52,7 +52,6 @@ const BillList = (props) => {
                         bills={bills} 
                         findCustomer={findCustomer} 
                         customers={customers} 
-                        dateFormatter={dateFormatter} 
                         handleInvoice={handleInvoice} 
                         handleDelete={handleDelete} 
                     />

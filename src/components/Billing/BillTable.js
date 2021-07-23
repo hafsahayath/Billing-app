@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap'
 
-const BillTable = ({bills, dateFormatter, findCustomer, customers, handleInvoice, handleDelete}) => {
+const BillTable = ({bills, findCustomer, customers, handleInvoice, handleDelete}) => {
 
     const tableStyle = {
         padding:'10px',
@@ -12,6 +12,12 @@ const BillTable = ({bills, dateFormatter, findCustomer, customers, handleInvoice
         marginLeft:'10px',
         boxShadow: '0 5px 5px -5px #888888'
     }
+
+    const dateFormatter = (date) =>{
+       return date.split('T')[0]
+    }
+    // const date = "2021-07-21T00:00:00.000Z"
+    // console.log(new Date())
 
     return (
         <div style={tableStyle}>

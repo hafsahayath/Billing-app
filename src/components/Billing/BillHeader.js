@@ -1,11 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Card, Button } from 'react-bootstrap'
-import { dateFormatter } from '../../selectors/billing'
 
 const BillHeader = (props) => {
     const account = useSelector(state=>state.account)
-    const date = dateFormatter(new Date().toISOString())
+    const date = new Date().toISOString().split('T')[0]
+    
     return (
         <div style={{display:'flex', justifyContent:'space-between',margin:'20px'}}>
             <Card style={{ width: '12rem', textAlign:'center' }}>

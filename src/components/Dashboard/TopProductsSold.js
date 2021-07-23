@@ -1,9 +1,9 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import TopProductsBarChart from './TopProductsBarChart'
 
-const TopProductsSold = ({ products}) => {
-    const bills = useSelector(state=>state.bills)
+const TopProductsSold = ({bills, products}) => {
+    // const bills = useSelector(state=>state.bills)
 
     const findProduct = (id, array) => {
         const prod = array.find(ele=>{
@@ -51,7 +51,7 @@ const TopProductsSold = ({ products}) => {
 
     return (
         <div>
-            <TopProductsBarChart top5={top5}/>
+            <TopProductsBarChart top5={top5} />
         </div>
     )
 }
