@@ -6,7 +6,9 @@ const Dashboard = (props) => {
     const account = useSelector(state=>state.account)
     return (
         <div style={{marginLeft:'10px'}}>
-            <h2 style={{color:'#4D7DE3'}}>Dashboard - {account.username} </h2>
+            <div style={{backgroundColor:'#4D7DE3',width:'350px', marginLeft:'40px', marginTop:'10px', borderRadius:"5px"}}>
+                <h2 style={{color:'#fff'}}>Dashboard - {account.username} </h2>
+            </div>
             <StatsContainer />
         </div>
     )

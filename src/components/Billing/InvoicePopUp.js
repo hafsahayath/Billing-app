@@ -58,7 +58,7 @@ const InvoicePopUp = (props) => {
         <Modal.Body ref={printComponentRef} style={{margin:"0", padding:"10px", border:'1px solid #eee'}}>
           <div className="row m-1">
             <div className="flex-column col-12">
-              <BillHeader />
+              <BillHeader date={date} status={true}/>
               <div className="mx-4">
                 <strong>Bill To :</strong>
                 <div className="p-2">

@@ -36,7 +36,9 @@ const ProductForm = (props) => {
 
     return (
         <div className="product-container">
-            <h1>products</h1>
+            <div style={{backgroundColor:"#4D7DE3", marginBottom:"6px"}}>
+                <h1 style={{color:"#fff"}}>products</h1>
+            </div>
         <div className="add-product-container">
             <FormItem formik={formik} buttonName="add" inline={true}/>
         </div>

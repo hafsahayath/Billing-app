@@ -35,7 +35,9 @@ const CustomerForm = (props) => {
 
     return (
         <div className="customer-container">
-            <h1>Customer data</h1>
+            <div style={{backgroundColor:"#4D7DE3"}}>
+                <h1 style={{color:"#fff"}}>customers</h1>
+            </div>
             <div className="add-customer-container">
                 <FormItem formik={formik} buttonName="Add customer" inline={true}/>
             </div>

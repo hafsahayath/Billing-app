@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import DatePicker from "react-datepicker";
 import { Button } from 'react-bootstrap';
@@ -6,6 +6,7 @@ import Stats from './Stats'
 import CustomersChart from './CustomersChart'
 import TableTopOrders from './TableTopOrders'
 import TopProductsSold from './TopProductsSold'
+import { swalError } from '../../selectors/alert';
 import "react-datepicker/dist/react-datepicker.css";
 
 const StatsContainer = (props) => {
@@ -14,10 +15,10 @@ const StatsContainer = (props) => {
     const products = useSelector(state=>state.products)
     const [startDate, setStartDate] = useState(new Date());
     const [allTime, setAllTime] = useState(true)
-
+    
     const dateArr = startDate.toLocaleDateString().split("/")
     const buildDate = `${dateArr.pop()}-${dateArr[0].length==1?'0'+dateArr.shift():dateArr.shift()}-${dateArr[0]}`
-
+    
     const billByDateFormat = bills.map(ele=>{
         return {...ele, date: ele.date.split('T')[0]}
     })
@@ -25,6 +26,17 @@ const StatsContainer = (props) => {
     const billByDate = billByDateFormat.filter(ele=>{
         return ele.date === buildDate
     })
+
+    useEffect(()=>{
+        if(!allTime){
+            if(billByDate.length===0){
+                setAllTime(true)
+                setStartDate(new Date())
+                swalError(`no bills on ${buildDate}`)
+            }
+        }
+        
+    },[startDate,allTime])
 
     const totalRevenueByDate = billByDateFormat.filter(ele=>ele.date===buildDate).reduce((acc, curr)=>acc+curr.total,0)
 
@@ -40,7 +52,7 @@ const StatsContainer = (props) => {
 
     return (
         <div className="mx-4">
-            <div className="d-flex align-items-center pl-3 m-2 justify-content-end">
+            <div className="d-flex align-items-center pb-2 pl-3 m-1 justify-content-end">
                 <DatePicker className="p-1 rounded-sm border border-primary" selected={startDate} onChange={handleDateChange} />
                 <Button className="ml-3 px-3" onClick={()=>setAllTime(true)}>All time</Button>
             </div>

@@ -41,7 +41,8 @@ export const swalAuthAlert = (text) => {
 export const swalError = (text) => {
   Swal.fire({
     icon: 'error',
-    title: 'Oops...',
-    text: text
+    title: text,
+    confirmButtonColor: "#0275d8",
+    width: '400px'
   })
 }
